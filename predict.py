@@ -5,7 +5,7 @@ import sys
 def main():
     mileage = input("Please enter a mileage: ")
     try:
-        mileage = int(mileage)
+        mileage = float(mileage)
     except ValueError:
         print("That's not a number!")
         sys.exit()
@@ -17,12 +17,12 @@ def main():
         sys.exit()
     if os.path.exists('values.txt'):
         with open('values.txt') as f:
-            theta0 = f.readline()
-            theta1 = f.readline()
+            theta0 = float(f.readline())
+            theta1 = float(f.readline())
     else:
         theta0 = 0
         theta1 = 0
-    estimatedPrice = theta0 + (theta1 * mileage)
+    estimatedPrice = theta0 * mileage + theta1
     print ("This car is worth " + str(estimatedPrice) + "$")
 
 if __name__ == "__main__":
